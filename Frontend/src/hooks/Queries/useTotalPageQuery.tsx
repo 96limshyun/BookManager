@@ -2,7 +2,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 
 const fetchTotalPage = async (query: string) => {
     const response = await fetch(
-        `http://localhost:3000/totalPage?query=${query}`
+        `${import.meta.env.VITE_API_URL}/totalPage?query=${query}`
     );
     if (!response.ok) {
         throw new Error("에러");

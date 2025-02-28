@@ -2,7 +2,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 
 const fetchFilteredBooks = async (query: string, currentPage: number) => {
     const response = await fetch(
-        `http://localhost:3000/books?query=${query}&page=${currentPage}`
+        `${import.meta.env.VITE_API_URL}/books?query=${query}&page=${currentPage}`
     );
     if (!response.ok) {
         throw new Error("에러");
