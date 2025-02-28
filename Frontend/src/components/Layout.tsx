@@ -9,7 +9,7 @@ const Layout = () => {
     const isHome = location.pathname === PATH.HOME;
 
     return (
-        <main className="p-4 flex flex-col gap-6">
+        <main className="p-4 flex flex-col gap-6 ">
             <div className="flex justify-between">
                 <Link to={PATH.HOME} className="font-bold text-2xl">
                     BookManager
