@@ -1,5 +1,6 @@
-import { FaPlus } from "react-icons/fa6";
 import { Link, Outlet, useLocation } from "react-router-dom";
+
+import { CreateBookBtn } from "./Buttons";
 
 import { PATH } from "@/constants";
 
@@ -8,20 +9,12 @@ const Layout = () => {
     const isHome = location.pathname === PATH.HOME;
 
     return (
-        <main className="p-4">
+        <main className="p-4 flex flex-col gap-6">
             <div className="flex justify-between">
                 <Link to={PATH.HOME} className="font-bold text-2xl">
                     BookManager
                 </Link>
-                {isHome && (
-                    <Link
-                        to={PATH.CREATE}
-                        className="flex gap-2 h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 cursor-pointer"
-                    >
-                        Create Book
-                        <FaPlus />
-                    </Link>
-                )}
+                {isHome && <CreateBookBtn />}
             </div>
             <Outlet />
         </main>
