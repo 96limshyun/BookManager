@@ -2,10 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 import mysql from "mysql2";
 import bookRouter from "./routes/book";
+import corsMiddleware from "./middlewares/cors";
 
 dotenv.config();
 
 const app = express();
+app.use(corsMiddleware);
 
 export const db = mysql.createConnection({
     host: process.env.DB_HOST,
