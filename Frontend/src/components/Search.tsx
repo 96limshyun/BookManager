@@ -1,12 +1,15 @@
 import { CiSearch } from "react-icons/ci";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
+import { useDebouncedCallback } from "use-debounce";
+
+import { DELAY_TIME } from "@/constants";
 
 const Search = () => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleSearch = (term: string) => {
+    const handleSearch = useDebouncedCallback((term: string) => {
         const params = new URLSearchParams(searchParams);
         params.set("page", "1");
 
@@ -17,7 +20,7 @@ const Search = () => {
         }
 
         navigate(`${location.pathname}?${params.toString()}`);
-    };
+    }, DELAY_TIME);
 
     return (
         <div className="relative w-full min-w-[200px]">
