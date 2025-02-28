@@ -1,0 +1,1 @@
+export type Title = "도서 등록" | "도서 수정"
