@@ -7,7 +7,6 @@ const fetchTotalPage = async (query: string) => {
     if (!response.ok) {
         throw new Error("에러");
     }
-    console.log(response)
     return await response.json();
 };
 
