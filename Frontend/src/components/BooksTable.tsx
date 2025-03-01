@@ -21,11 +21,11 @@ const BooksTable = ({ query, currentPage }: BooksTableProps) => {
             <table className="min-w-full text-gray-900 table-fixed">
                 <thead>
                     <tr className="text-left text-md">
-                        <th scope="col" className="py-3 font-medium pl-2">제목</th>
-                        <th scope="col" className="py-3 font-medium pl-2">저자</th>
-                        <th scope="col" className="py-3 font-medium pl-2">출판사</th>
-                        <th scope="col" className="py-3 font-medium pl-2">ISBN13</th>
-                        <th scope="col" className="py-3 font-medium pl-2">수량</th>
+                        <th scope="col" className="py-3 font-medium pl-2 w-[25%]">제목</th>
+                        <th scope="col" className="py-3 font-medium pl-2 w-[20%]">저자</th>
+                        <th scope="col" className="py-3 font-medium pl-2 w-[20%]">출판사</th>
+                        <th scope="col" className="py-3 font-medium pl-2 w-[20%]">ISBN13</th>
+                        <th scope="col" className="py-3 font-medium pl-2 w-[10%]">수량</th>
                     </tr>
                 </thead>
                 <tbody className="bg-white text-left text-sm">

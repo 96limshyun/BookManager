@@ -12,11 +12,19 @@ const BooksTableRow = ({book, onOpen}: BooksTableRow) => {
 
     return (
         <tr className="border-b border-gray-200 hover:bg-gray-50" onClick={onOpen}>
-            <td className="p-2"><div className="truncate">{bookname}</div></td>
-            <td className="p-2"><div className="truncate">{authors}</div></td>
-            <td className="p-2"><div className="truncate">{publisher}</div></td>
-            <td className="p-2"><div className="truncate">{isbn13}</div></td>
-            <td className="p-2"><div className="truncate">{quantity}</div></td>
+            <td className="p-2 w-[25%]">
+                <div className="truncate w-[180px]">{bookname}</div>
+            </td>
+            <td className="p-2 w-[20%]">
+                <div className="truncate w-[140px]">{authors}</div>
+            </td>
+            <td className="p-2 w-[20%]">
+                <div className="truncate w-[140px]">{publisher}</div>
+            </td>
+            <td className="p-2 w-[20%]">
+                <div className="truncate w-[120px]">{isbn13}</div>
+            </td>
+            <td className="p-2 w-[10%]">{quantity}</td>
             <td className="p-2">
                 <button onClick={(e) => e.stopPropagation()}>
                     <EditBooksBtn id={id} />
