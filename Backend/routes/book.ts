@@ -6,7 +6,7 @@ const ITEMS_PER_PAGE = 10;
 
 bookRouter.get("/books", (req, res) => {
     const searchQuery = req.query.query ? `%${req.query.query}%` : "%";
-    const currentPage = req.query.page;
+    const currentPage = req.query.page || 1;
 
     const offset = (currentPage - 1) * ITEMS_PER_PAGE;
     db.query(
@@ -15,9 +15,11 @@ bookRouter.get("/books", (req, res) => {
         (err, results) => {
             if (err) {
                 console.error("쿼리 실행 오류:", err);
+                
                 return res.status(500).send("서버 오류");
             }
-            res.json(results);
+            
+            res.status(200).json(results);
         }
     );
 });

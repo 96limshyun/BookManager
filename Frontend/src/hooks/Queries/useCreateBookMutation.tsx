@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 import { BookType } from "@/types";
+import HTTPError from "@/utils/HTTPError";
 
 const fetchCreateBook = async (body: BookType) => {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/books`, {
@@ -12,7 +13,7 @@ const fetchCreateBook = async (body: BookType) => {
         body: JSON.stringify(body)
     })
     if (!response.ok) {
-        throw new Error("에러");
+        throw new HTTPError(response.status);
     }
     return await response.json();
 };
