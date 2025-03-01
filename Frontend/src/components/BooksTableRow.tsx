@@ -17,8 +17,16 @@ const BooksTableRow = ({book, onOpen}: BooksTableRow) => {
             <td className="p-2"><div className="truncate">{publisher}</div></td>
             <td className="p-2"><div className="truncate">{isbn13}</div></td>
             <td className="p-2"><div className="truncate">{quantity}</div></td>
-            <td className="p-2"><EditBooksBtn id={id}/></td>
-            <td className="p-2"><DeleteBooksBtn id={id}/></td>
+            <td className="p-2">
+                <button onClick={(e) => e.stopPropagation()}>
+                    <EditBooksBtn id={id} />
+                </button>
+            </td>
+            <td className="p-2">
+                <button onClick={(e) => e.stopPropagation()}>
+                    <DeleteBooksBtn id={id} />
+                </button>
+            </td>
         </tr>
     )
 }
