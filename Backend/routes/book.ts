@@ -23,7 +23,7 @@ bookRouter.get("/books", (req, res) => {
 });
 
 bookRouter.get("/books/detail", (req, res) => {
-    const {id} = req.query;
+    const { id } = req.query;
     db.query(
         "SELECT id, bookname, authors, publisher, isbn13, quantity from books WHERE id = ?",
         [id],
@@ -32,9 +32,9 @@ bookRouter.get("/books/detail", (req, res) => {
                 console.error("쿼리 실행 오류:", err);
                 return res.status(500).json({ message: "서버 오류 발생" });
             }
-            res.json(result[0])
+            res.json(result[0]);
         }
-    )
+    );
 });
 
 bookRouter.get("/totalPage", (req, res) => {
@@ -67,7 +67,9 @@ bookRouter.post("/books", (req, res) => {
                 console.error("쿼리 실행 오류:", err);
                 return res.status(500).send("서버 오류");
             }
-            res.status(201).json({ message: "도서가 성공적으로 추가되었습니다." });
+            res.status(201).json({
+                message: "도서가 성공적으로 추가되었습니다.",
+            });
         }
     );
 });
@@ -75,7 +77,6 @@ bookRouter.post("/books", (req, res) => {
 bookRouter.put("/books/:id", (req, res) => {
     const { id } = req.params;
     const { bookname, authors, publisher, isbn13, quantity } = req.body;
-    console.log(id)
 
     db.query(
         "UPDATE books SET bookname = ?, authors = ?, publisher = ?, isbn13 = ?, quantity = ? WHERE id = ?",
@@ -86,9 +87,24 @@ bookRouter.put("/books/:id", (req, res) => {
                 return res.status(500).send("서버 오류");
             }
 
-            res.status(200).json({ message: "도서가 성공적으로 수정되었습니다." });
+            res.status(200).json({
+                message: "도서가 성공적으로 수정되었습니다.",
+            });
         }
     );
+});
+
+bookRouter.delete("/books/:id", (req, res) => {
+    const { id } = req.params;
+
+    db.query("DELETE FROM books WHERE id = ?", [id], (err, result) => {
+        if (err) {
+            console.error("삭제 오류:", err);
+            return res.status(500).json({ message: "서버 오류 발생" });
+        }
+
+        res.status(200).json({ message: "도서가 성공적으로 삭제되었습니다." });
+    });
 });
 
 export default bookRouter;

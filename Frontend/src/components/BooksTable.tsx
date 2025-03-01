@@ -33,7 +33,7 @@ const BooksTable = ({ query, currentPage }: BooksTableProps) => {
                             <td className="p-2"><div className="truncate">{book.isbn13}</div></td>
                             <td className="p-2"><div className="truncate">{book.quantity}</div></td>
                             <td className="p-2"><EditBooksBtn id={book.id}/></td>
-                            <td className="p-2"><DeleteBooksBtn /></td>
+                            <td className="p-2"><DeleteBooksBtn id={book.id}/></td>
                         </tr>
                     ))}
                 </tbody>
