@@ -9,3 +9,9 @@ export const QUERY_ERROR_MESSAGE = {
     EDIT_BOOK: "도서 수정 쿼리 오류:",
     DELETE_BOOK: "도서 삭제 오류:",
 };
+
+export const SUCCESS_MESSAGE = {
+    CREATE_BOOK: "도서가 성공적으로 추가되었습니다.",
+    EDIT_BOOK: "도서가 성공적으로 수정되었습니다.",
+    DELETE_BOOK: "도서가 성공적으로 삭제되었습니다."
+};
