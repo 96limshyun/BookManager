@@ -11,7 +11,7 @@ import { BookType } from "@/types";
 const Edit = () => {
     const { id } = useParams();
     const { data: bookDetailData, isLoading } = useBookDetailQuery(id!);
-    const { mutate } = useEditBookMutation(Number(id));
+    const { mutate, isPending } = useEditBookMutation(Number(id));
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -31,12 +31,13 @@ const Edit = () => {
     };
 
     if(isLoading) return <EditFormSkeleton/>
-
+    
     return (
         <Form
             title="도서 수정"
             initialValue={bookDetailData}
             handleSubmit={handleSubmit}
+            isPending={isPending}
         />
     );
 };

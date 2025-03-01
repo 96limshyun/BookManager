@@ -6,7 +6,7 @@ import useCreateBookMutation from "@/hooks/Queries/useCreateBookMutation";
 import { BookType } from "@/types";
 
 const Create = () => {
-    const { mutate } = useCreateBookMutation();
+    const { mutate, isPending } = useCreateBookMutation();
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -24,7 +24,13 @@ const Create = () => {
 
         mutate(bookData);
     };
-    return <Form title="도서 등록" handleSubmit={handleSubmit} />;
+    return (
+        <Form
+            title="도서 등록"
+            handleSubmit={handleSubmit}
+            isPending={isPending}
+        />
+    );
 };
 
 export default Create;
