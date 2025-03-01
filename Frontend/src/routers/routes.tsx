@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import Layout from "@/components/Layout";
+import NotFound from "@/components/NotFound";
 import Create from "@/pages/Create";
 import Edit from "@/pages/Edit";
 import Home from "@/pages/Home";
@@ -19,13 +20,13 @@ export const route = createBrowserRouter([
                 element: <Create />,
             },
             {
-                path: "edit",
+                path: "edit/:id",
                 element: <Edit />,
             },
         ],
     },
     {
         path: "*",
-        element: <div>NotFound Component 추후 생성</div>,
+        element: <NotFound/>,
     },
 ]);

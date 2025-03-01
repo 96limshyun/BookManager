@@ -1,7 +1,27 @@
+import { useParams } from "react-router-dom";
+
 import Form from "@/components/Form";
+import useBookDetailQuery from "@/hooks/Queries/useBookDetailQuery";
+import useEditBookMutation from "@/hooks/Queries/useEditBookMutation";
+import useFormHandler from "@/hooks/useFormHandler";
+import EditFormSkeleton from "@/skeletons/EditFormSkeleton";
 
 const Edit = () => {
-    return <Form title="도서 수정"/>
+    const { id } = useParams();
+    const { data: bookDetailData, isLoading } = useBookDetailQuery(id!);
+    const { mutate, isPending } = useEditBookMutation(Number(id));
+    const { handleSubmit } = useFormHandler(mutate)
+
+    if(isLoading) return <EditFormSkeleton/>
+    
+    return (
+        <Form
+            title="도서 수정"
+            initialValue={bookDetailData}
+            handleSubmit={handleSubmit}
+            isPending={isPending}
+        />
+    );
 };
 
 export default Edit;

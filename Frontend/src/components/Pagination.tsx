@@ -40,7 +40,7 @@ const Pagination = ({ query, currentPage }: PaginationProps) => {
                 onClick={handlePrevPage}
                 disabled={currentPage === 1}
                 className={`flex items-center justify-center w-10 h-10 rounded-md ${
-                    currentPage === 1 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    currentPage === 1 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gray-100 text-gray-600 hover:bg-gray-200 cursor-pointer"
                 }`}
             >
                 <AiOutlineLeft className="w-5 h-5" />
@@ -52,7 +52,7 @@ const Pagination = ({ query, currentPage }: PaginationProps) => {
                     <button
                         key={page}
                         onClick={() => handlePageClick(page)}
-                        className={`w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium ${
+                        className={`w-10 h-10 flex items-center justify-center rounded-md text-sm font-medium cursor-pointer ${
                             page === currentPage ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                         }`}
                     >
@@ -65,7 +65,7 @@ const Pagination = ({ query, currentPage }: PaginationProps) => {
                 onClick={handleNextPage}
                 disabled={currentPage === totalPage}
                 className={`flex items-center justify-center w-10 h-10 rounded-md ${
-                    currentPage === totalPage ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    currentPage === totalPage ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gray-100 text-gray-600 hover:bg-gray-200 cursor-pointer"
                 }`}
             >
                 <AiOutlineRight className="w-5 h-5" />
