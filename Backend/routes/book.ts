@@ -41,4 +41,20 @@ bookRouter.get("/totalPage", (req, res) => {
     );
 });
 
+bookRouter.post("/books", (req, res) => {
+    const { bookname, authors, publisher, isbn13, quantity } = req.body;
+
+    db.query(
+        "INSERT INTO books (bookname, authors, publisher, isbn13, quantity) VALUES (?, ? , ?, ?, ?)",
+        [bookname, authors, publisher, isbn13, quantity],
+        (err, result) => {
+            if (err) {
+                console.error("쿼리 실행 오류:", err);
+                return res.status(500).send("서버 오류");
+            }
+            res.status(201).json({ message: "도서가 성공적으로 추가되었습니다." });
+        }
+    );
+});
+
 export default bookRouter;
