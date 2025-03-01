@@ -26,14 +26,14 @@ const BooksTableRow = ({book, onOpen}: BooksTableRow) => {
             </td>
             <td className="p-2 w-[10%]">{quantity}</td>
             <td className="p-2">
-                <button onClick={(e) => e.stopPropagation()}>
+                <div onClick={(e) => e.stopPropagation()}>
                     <EditBooksBtn id={id} />
-                </button>
+                </div>
             </td>
             <td className="p-2">
-                <button onClick={(e) => e.stopPropagation()}>
+                <div onClick={(e) => e.stopPropagation()}>
                     <DeleteBooksBtn id={id} />
-                </button>
+                </div>
             </td>
         </tr>
     )
