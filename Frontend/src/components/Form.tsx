@@ -21,6 +21,7 @@ const Form = ({
     handleSubmit
 }: FormProps) => {
     const navigate = useNavigate()
+    
     return (
         <section className="w-full mx-auto rounded-md border-[1px] border-gray-400 p-6 flex flex-col items-center">
             <h1 className="text-left font-bold text-2xl mb-6">{title}</h1>
