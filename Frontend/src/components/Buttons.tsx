@@ -16,10 +16,10 @@ export const CreateBookBtn = () => {
     );
 };
 
-export const EditBooksBtn = () => {
+export const EditBooksBtn = ({id}: {id: number}) => {
     return (
         <Link
-            to={PATH.EDIT}
+            to={`${PATH.EDIT}/${id}`}
             className="w-10 h-10 flex items-center justify-center rounded-md border border-gray-300 p-2 hover:bg-gray-100"
         >
             <MdOutlineEdit className="text-lg text-gray-600" />
