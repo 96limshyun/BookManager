@@ -2,19 +2,19 @@ import { CiSearch } from "react-icons/ci";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 
-import { DELAY_TIME } from "@/constants";
+import { DEFAULT_PAGE, DELAY_TIME } from "@/constants";
 
 const Search = () => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleSearch = useDebouncedCallback((term: string) => {
+    const handleSearch = useDebouncedCallback((value: string) => {
         const params = new URLSearchParams(searchParams);
-        params.set("page", "1");
+        params.set("page", DEFAULT_PAGE.toString());
 
-        if (term) {
-            params.set("query", term);
+        if (value) {
+            params.set("query", value);
         } else {
             params.delete("query");
         }
