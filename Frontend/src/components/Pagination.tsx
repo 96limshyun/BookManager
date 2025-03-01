@@ -1,6 +1,7 @@
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
+import { PAGE_GROUP_SIZE } from "@/constants";
 import useTotalPageQuery from "@/hooks/Queries/useTotalPageQuery";
 
 interface PaginationProps {
@@ -19,20 +20,12 @@ const Pagination = ({ query, currentPage }: PaginationProps) => {
         navigate(`?${params.toString()}`);
     };
 
-    const handlePrevPage = () => {
-        if (currentPage > 1) {
-            handlePageClick(currentPage - 1);
-        }
-    };
+    const handlePrevPage = () => currentPage > 1 && handlePageClick(currentPage - 1);
 
-    const handleNextPage = () => {
-        if (currentPage < totalPage) {
-            handlePageClick(currentPage + 1);
-        }
-    };
+    const handleNextPage = () => currentPage < totalPage && handlePageClick(currentPage + 1);
 
-    const pageGroupStart = Math.floor((currentPage - 1) / 5) * 5 + 1;
-    const pageGroupEnd = Math.min(pageGroupStart + 4, totalPage);
+    const pageGroupStart = Math.floor((currentPage - 1) / PAGE_GROUP_SIZE) * PAGE_GROUP_SIZE + 1;
+    const pageGroupEnd = Math.min(pageGroupStart + PAGE_GROUP_SIZE - 1, totalPage);
 
     return (
         <div className="flex items-center justify-center gap-2">
