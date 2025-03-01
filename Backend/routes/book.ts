@@ -1,6 +1,6 @@
 import express from "express";
 import { db } from "../app";
-import { DEFAULT_PAGE, ITEMS_PER_PAGE, QUERY_ERROR_MESSAGE } from "../constants";
+import { DEFAULT_PAGE, ITEMS_PER_PAGE, QUERY_ERROR_MESSAGE, SUCCESS_MESSAGE } from "../constants";
 
 const bookRouter = express.Router();
 
@@ -35,7 +35,7 @@ bookRouter.get("/books/detail", (req, res) => {
                 console.error(QUERY_ERROR_MESSAGE.DETAIL, err);
                 return res.status(500);
             }
-            res.json(result[0]);
+            res.status(200).json(result[0])
         }
     );
 });
@@ -54,7 +54,7 @@ bookRouter.get("/totalPage", (req, res) => {
             const totalBooks = results[0].total;
             const totalPages = Math.ceil(totalBooks / ITEMS_PER_PAGE);
 
-            res.json(totalPages);
+            res.status(200).json(totalPages);
         }
     );
 });
@@ -70,7 +70,7 @@ bookRouter.post("/books", (req, res) => {
                 console.error(QUERY_ERROR_MESSAGE.CREATE_BOOK, err);
                 return res.status(500);
             }
-            res.status(201);
+            res.status(201).json({ message: SUCCESS_MESSAGE.CREATE_BOOK});
         }
     );
 });
@@ -88,7 +88,7 @@ bookRouter.put("/books/:id", (req, res) => {
                 return res.status(500);
             }
 
-            res.status(200);
+            res.status(200).json({ message: SUCCESS_MESSAGE.EDIT_BOOK });
         }
     );
 });
@@ -102,7 +102,7 @@ bookRouter.delete("/books/:id", (req, res) => {
             return res.status(500);
         }
 
-        res.status(200);
+        res.status(200).json({ message: SUCCESS_MESSAGE.DELETE_BOOK });
     });
 });
 
