@@ -5,6 +5,7 @@ import Form from "@/components/Form";
 import { FORM_FIELDS } from "@/constants";
 import useBookDetailQuery from "@/hooks/Queries/useBookDetailQuery";
 import useEditBookMutation from "@/hooks/Queries/useEditBookMutation";
+import EditFormSkeleton from "@/skeletons/EditFormSkeleton";
 import { BookType } from "@/types";
 
 const Edit = () => {
@@ -29,7 +30,7 @@ const Edit = () => {
         mutate(bookData);
     };
 
-    if(isLoading) return <div>...loading</div>
+    if(isLoading) return <EditFormSkeleton/>
 
     return (
         <Form
