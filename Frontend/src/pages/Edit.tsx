@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import Form from "@/components/Form";
+import { TITLE } from "@/constants";
 import useBookDetailQuery from "@/hooks/Queries/useBookDetailQuery";
 import useEditBookMutation from "@/hooks/Queries/useEditBookMutation";
 import useFormHandler from "@/hooks/useFormHandler";
@@ -16,7 +17,7 @@ const Edit = () => {
     
     return (
         <Form
-            title="도서 수정"
+            title={TITLE.EDIT_PAGE}
             initialValue={bookDetailData}
             handleSubmit={handleSubmit}
             isPending={isPending}
