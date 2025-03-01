@@ -26,16 +26,16 @@ const Form = ({ title, initialValue, handleSubmit, isPending }: FormProps) => {
                 <div className="mb-4">
                     <label
                         htmlFor="bookname"
-                        className="block text-left text-gray-700 mb-2"
+                        className="input-label"
                     >
                         도서명
                     </label>
                     <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <div className="input-icon">
                             <IoBookOutline />
                         </div>
                         <input
-                            className="w-full rounded-md border-[1px] border-gray-400 py-[9px] pl-10 text-sm placeholder:text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                            className="form-input"
                             id="bookname"
                             name="bookname"
                             placeholder="도서명을 입력해주세요."
@@ -48,16 +48,16 @@ const Form = ({ title, initialValue, handleSubmit, isPending }: FormProps) => {
                 <div className="mb-4">
                     <label
                         htmlFor="authors"
-                        className="block text-left text-gray-700 mb-2"
+                        className="input-label"
                     >
                         저자
                     </label>
                     <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <div className="input-icon">
                             <IoPersonOutline />
                         </div>
                         <input
-                            className="w-full rounded-md border-[1px] border-gray-400 py-[9px] pl-10 text-sm placeholder:text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                            className="form-input"
                             id="authors"
                             name="authors"
                             placeholder="저자명을 입력해주세요."
@@ -70,16 +70,16 @@ const Form = ({ title, initialValue, handleSubmit, isPending }: FormProps) => {
                 <div className="mb-4">
                     <label
                         htmlFor="publisher"
-                        className="block text-left text-gray-700 mb-2"
+                        className="input-label"
                     >
                         출판사
                     </label>
                     <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <div className="input-icon">
                             <FaRegBuilding />
                         </div>
                         <input
-                            className="w-full rounded-md border-[1px] border-gray-400 py-[9px] pl-10 text-sm placeholder:text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                            className="form-input"
                             id="publisher"
                             name="publisher"
                             placeholder="출판사명을 입력해주세요."
@@ -92,16 +92,16 @@ const Form = ({ title, initialValue, handleSubmit, isPending }: FormProps) => {
                 <div className="mb-4">
                     <label
                         htmlFor="isbn13"
-                        className="block text-left text-gray-700 mb-2"
+                        className="input-label"
                     >
                         ISBN13
                     </label>
                     <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <div className="input-icon">
                             <CiStickyNote />
                         </div>
                         <input
-                            className="w-full rounded-md border-[1px] border-gray-400 py-[9px] pl-10 text-sm placeholder:text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                            className="form-input"
                             id="isbn13"
                             name="isbn13"
                             placeholder="isbn13을 입력해주세요."
@@ -119,16 +119,16 @@ const Form = ({ title, initialValue, handleSubmit, isPending }: FormProps) => {
                 <div className="mb-6">
                     <label
                         htmlFor="quantity"
-                        className="block text-left text-gray-700 mb-2"
+                        className="input-label"
                     >
                         수량
                     </label>
                     <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <div className="input-icon">
                             <MdOutlineProductionQuantityLimits />
                         </div>
                         <input
-                            className="w-full rounded-md border-[1px] border-gray-400 py-[9px] pl-10 text-sm placeholder:text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                            className="form-input"
                             type="number"
                             id="quantity"
                             name="quantity"

@@ -1,4 +1,5 @@
 import Form from "@/components/Form";
+import { TITLE } from "@/constants";
 import useCreateBookMutation from "@/hooks/Queries/useCreateBookMutation";
 import useFormHandler from "@/hooks/useFormHandler";
 
@@ -8,7 +9,7 @@ const Create = () => {
 
     return (
         <Form
-            title="도서 등록"
+            title={TITLE.CREATE_PAGE}
             handleSubmit={handleSubmit}
             isPending={isPending}
         />

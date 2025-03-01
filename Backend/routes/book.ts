@@ -1,12 +1,13 @@
 import express from "express";
 import { db } from "../app";
+import { DEFAULT_PAGE, ITEMS_PER_PAGE, QUERY_ERROR_MESSAGE } from "../constants";
 
 const bookRouter = express.Router();
-const ITEMS_PER_PAGE = 10;
+
 
 bookRouter.get("/books", (req, res) => {
     const searchQuery = req.query.query ? `%${req.query.query}%` : "%";
-    const currentPage = req.query.page || 1;
+    const currentPage = req.query.page || DEFAULT_PAGE;
 
     const offset = (currentPage - 1) * ITEMS_PER_PAGE;
     db.query(
@@ -14,9 +15,9 @@ bookRouter.get("/books", (req, res) => {
         [searchQuery, searchQuery, ITEMS_PER_PAGE, offset],
         (err, results) => {
             if (err) {
-                console.error("쿼리 실행 오류:", err);
+                console.error(QUERY_ERROR_MESSAGE.SEARCH, err);
                 
-                return res.status(500).send("서버 오류");
+                return res.status(500);
             }
             
             res.status(200).json(results);
@@ -31,8 +32,8 @@ bookRouter.get("/books/detail", (req, res) => {
         [id],
         (err, result) => {
             if (err) {
-                console.error("쿼리 실행 오류:", err);
-                return res.status(500).json({ message: "서버 오류 발생" });
+                console.error(QUERY_ERROR_MESSAGE.DETAIL, err);
+                return res.status(500);
             }
             res.json(result[0]);
         }
@@ -47,8 +48,8 @@ bookRouter.get("/totalPage", (req, res) => {
         [searchQuery, searchQuery],
         (err, results) => {
             if (err) {
-                console.error("쿼리 실행 오류:", err);
-                return res.status(500).send("서버 오류");
+                console.error(QUERY_ERROR_MESSAGE.TOTAL_PAGE, err);
+                return res.status(500);
             }
             const totalBooks = results[0].total;
             const totalPages = Math.ceil(totalBooks / ITEMS_PER_PAGE);
@@ -66,12 +67,10 @@ bookRouter.post("/books", (req, res) => {
         [bookname, authors, publisher, isbn13, quantity],
         (err, result) => {
             if (err) {
-                console.error("쿼리 실행 오류:", err);
-                return res.status(500).send("서버 오류");
+                console.error(QUERY_ERROR_MESSAGE.CREATE_BOOK, err);
+                return res.status(500);
             }
-            res.status(201).json({
-                message: "도서가 성공적으로 추가되었습니다.",
-            });
+            res.status(201);
         }
     );
 });
@@ -85,13 +84,11 @@ bookRouter.put("/books/:id", (req, res) => {
         [bookname, authors, publisher, isbn13, quantity, id],
         (err, result) => {
             if (err) {
-                console.error("쿼리 실행 오류:", err);
-                return res.status(500).send("서버 오류");
+                console.error(QUERY_ERROR_MESSAGE.EDIT_BOOK, err);
+                return res.status(500);
             }
 
-            res.status(200).json({
-                message: "도서가 성공적으로 수정되었습니다.",
-            });
+            res.status(200);
         }
     );
 });
@@ -101,11 +98,11 @@ bookRouter.delete("/books/:id", (req, res) => {
 
     db.query("DELETE FROM books WHERE id = ?", [id], (err, result) => {
         if (err) {
-            console.error("삭제 오류:", err);
-            return res.status(500).json({ message: "서버 오류 발생" });
+            console.error(QUERY_ERROR_MESSAGE.DELETE_BOOK, err);
+            return res.status(500);
         }
 
-        res.status(200).json({ message: "도서가 성공적으로 삭제되었습니다." });
+        res.status(200);
     });
 });
 
