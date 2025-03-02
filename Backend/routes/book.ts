@@ -17,7 +17,7 @@ bookRouter.get("/books", (req, res) => {
             if (err) {
                 console.error(QUERY_ERROR_MESSAGE.SEARCH, err);
                 
-                return res.status(500);
+                return res.status(500).json({message: QUERY_ERROR_MESSAGE.SEARCH});
             }
             
             res.status(200).json(results);
@@ -33,7 +33,7 @@ bookRouter.get("/books/detail", (req, res) => {
         (err, result) => {
             if (err) {
                 console.error(QUERY_ERROR_MESSAGE.DETAIL, err);
-                return res.status(500);
+                return res.status(500).json({message: QUERY_ERROR_MESSAGE.DETAIL});
             }
             res.status(200).json(result[0])
         }
@@ -49,7 +49,7 @@ bookRouter.get("/totalPage", (req, res) => {
         (err, results) => {
             if (err) {
                 console.error(QUERY_ERROR_MESSAGE.TOTAL_PAGE, err);
-                return res.status(500);
+                return res.status(500).json({message: QUERY_ERROR_MESSAGE.TOTAL_PAGE});
             }
             const totalBooks = results[0].total;
             const totalPages = Math.ceil(totalBooks / ITEMS_PER_PAGE);
@@ -63,14 +63,29 @@ bookRouter.post("/books", (req, res) => {
     const { bookname, authors, publisher, isbn13, quantity } = req.body;
 
     db.query(
-        "INSERT INTO books (bookname, authors, publisher, isbn13, quantity) VALUES (?, ? , ?, ?, ?)",
-        [bookname, authors, publisher, isbn13, quantity],
+        "SELECT * FROM books WHERE isbn13 = ?", 
+        [isbn13], 
         (err, result) => {
             if (err) {
                 console.error(QUERY_ERROR_MESSAGE.CREATE_BOOK, err);
-                return res.status(500);
+                return res.status(500).json({ message: QUERY_ERROR_MESSAGE.CREATE_BOOK });
             }
-            res.status(201).json({ message: SUCCESS_MESSAGE.CREATE_BOOK});
+
+            if (Array.isArray(result) && result.length > 0) {
+                return res.status(409).json({ message: QUERY_ERROR_MESSAGE.DELETE_BOOK });
+            }
+
+            db.query(
+                "INSERT INTO books (bookname, authors, publisher, isbn13, quantity) VALUES (?, ?, ?, ?, ?)",
+                [bookname, authors, publisher, isbn13, quantity],
+                (err, result) => {
+                    if (err) {
+                        console.error(QUERY_ERROR_MESSAGE.CREATE_BOOK, err);
+                        return res.status(500).json({ message: QUERY_ERROR_MESSAGE.CREATE_BOOK });
+                    }
+                    res.status(201).json({ message: SUCCESS_MESSAGE.CREATE_BOOK });
+                }
+            );
         }
     );
 });
@@ -80,15 +95,30 @@ bookRouter.put("/books/:id", (req, res) => {
     const { bookname, authors, publisher, isbn13, quantity } = req.body;
 
     db.query(
-        "UPDATE books SET bookname = ?, authors = ?, publisher = ?, isbn13 = ?, quantity = ? WHERE id = ?",
-        [bookname, authors, publisher, isbn13, quantity, id],
+        "SELECT * FROM books WHERE isbn13 = ? AND id != ?", 
+        [isbn13, id], 
         (err, result) => {
             if (err) {
                 console.error(QUERY_ERROR_MESSAGE.EDIT_BOOK, err);
-                return res.status(500);
+                return res.status(500).json({ message: QUERY_ERROR_MESSAGE.EDIT_BOOK });
             }
 
-            res.status(200).json({ message: SUCCESS_MESSAGE.EDIT_BOOK });
+            if (Array.isArray(result) && result.length > 0) {
+                return res.status(409).json({ message: QUERY_ERROR_MESSAGE.ISBN_DUPLICATE });
+            }
+
+            db.query(
+                "UPDATE books SET bookname = ?, authors = ?, publisher = ?, isbn13 = ?, quantity = ? WHERE id = ?",
+                [bookname, authors, publisher, isbn13, quantity, id],
+                (err, result) => {
+                    if (err) {
+                        console.error(QUERY_ERROR_MESSAGE.EDIT_BOOK, err);
+                        return res.status(500).json({ message: QUERY_ERROR_MESSAGE.EDIT_BOOK });
+                    }
+
+                    res.status(200).json({ message: SUCCESS_MESSAGE.EDIT_BOOK });
+                }
+            );
         }
     );
 });
@@ -99,7 +129,7 @@ bookRouter.delete("/books/:id", (req, res) => {
     db.query("DELETE FROM books WHERE id = ?", [id], (err, result) => {
         if (err) {
             console.error(QUERY_ERROR_MESSAGE.DELETE_BOOK, err);
-            return res.status(500);
+            return res.status(500).json({message: QUERY_ERROR_MESSAGE.DELETE_BOOK});
         }
 
         res.status(200).json({ message: SUCCESS_MESSAGE.DELETE_BOOK });
