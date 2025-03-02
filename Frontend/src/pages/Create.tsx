@@ -1,4 +1,4 @@
-import Form from "@/components/Form";
+import Form from "@/components/common/Form";
 import { TITLE } from "@/constants";
 import useCreateBookMutation from "@/hooks/Queries/useCreateBookMutation";
 import useFormHandler from "@/hooks/useFormHandler";

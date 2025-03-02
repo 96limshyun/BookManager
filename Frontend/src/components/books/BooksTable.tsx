@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import BookDetail from "./BookDetail";
 import BooksTableRow from "./BooksTableRow";
-import Modal from "./Modal";
+import Modal from "../common/Modal";
 
 import useFilteredBooksQuery from "@/hooks/Queries/useFilteredBooksQuery";
 import { BookType } from "@/types";

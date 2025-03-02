@@ -1,12 +1,12 @@
 import { Suspense } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import BooksTable from "@/components/BooksTable";
-import Pagination from "@/components/Pagination";
-import Search from "@/components/Search";
+import BooksTable from "@/components/books/BooksTable";
+import Search from "@/components/books/Search";
+import Pagination from "@/components/common/Pagination";
+import BooksTableSkeleton from "@/components/skeletons/BooksTableSkeleton";
+import PaginationSkeleton from "@/components/skeletons/PaginationSkeleton";
 import { DEFAULT_PAGE, DEFAULT_QUERY } from "@/constants";
-import BooksTableSkeleton from "@/skeletons/BooksTableSkeleton";
-import PaginationSkeleton from "@/skeletons/PaginationSkeleton";
 
 const Home = () => {
     const [searchParams] = useSearchParams();
