@@ -1,7 +1,7 @@
 # BookManager
 ## 🔗 [배포 사이트](https://d354hlenfgy3gn.cloudfront.net/)
 
-## 기술 스택
+## 🛠️ 기술 스택
 ### **Frontend**
 - **Core**: <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"/>, <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white"/>
 
@@ -30,16 +30,24 @@
 | <img src="https://img.shields.io/badge/AWS EC2-FF9900?style=flat&logo=amazonec2&logoColor=white"/> | **백엔드 서버 호스팅 (Node.js + Express)** |
 | <img src="https://img.shields.io/badge/PM2-2B037A?style=flat&logo=pm2&logoColor=white"/> | **백엔드 서버 프로세스 관리 및 자동 재시작** |
 
-## 실행 화면
+## 📺 실행 화면
 1. 검색 및 페이지네이션, 상세 보기
+
+https://github.com/user-attachments/assets/e81bbee7-4623-4562-80b9-16606f700116
 
 2. 도서 생성
 
+https://github.com/user-attachments/assets/5ca4eea9-2e04-4dc4-96fa-28d8a87837d9
+
 3. 도서 수정, 삭제
+
+https://github.com/user-attachments/assets/2f361027-6449-4c44-8631-a50638594fc5
 
 4. ISBN 중복시 FallBack
 
-## 구현 기능
+https://github.com/user-attachments/assets/03282f25-7d1b-4f68-91d8-effc302753d6
+
+## 🚀 구현 기능
 ### 책 목록 조회  
 - 책 목록을 테이블 형식으로 보여주고, 한 페이지당 10권씩 표시합니다.
 - 페이지네이션으로 탐색 기능을 제공합니다.
@@ -72,7 +80,7 @@
 - 예를 들어, 이미 존재하는 ISBN-13을 입력하면 409 오류 메시지를 표시하고, 서버 오류 발생 시 500 오류 메시지를 보여줍니다.
 - 요청 실패 시, ErrorFallback 컴포넌트를 통해 사용자에게 안내 메시지를 표시하고 돌아가기 버튼으로 다시 전 상태로 돌아갈 수 있습니다.
 
-## 폴더구조
+## 📂 폴더구조
 ### **Frontend**
 
 ```
@@ -155,7 +163,7 @@
  ┗ 📜package.json              # 프로젝트 메타정보 및 의존성 목록을 정의한 파일
 ```
 
-## 설치 및 실행
+## ⚙️ 설치 및 실행
 ### **Frontend**
 ```sh
 # 저장소 클론
@@ -271,7 +279,7 @@ npm run dev
 
 
 
-## API 명세서
+## 📜 API 명세서
 ### 1. 도서 목록 조회: 제목과 저자로 필터링 후, 페이지네이션으로 10개씩 반환합니다.
 - URL: `GET /books`
 - 예시 `GET /books?page=1&query=React`
@@ -397,7 +405,7 @@ DELETE /books/1
 응답 코드: 200
 ```
 
-## 프론트엔드 사전 과제
+## 🎯 프론트엔드 사전 과제
 - 문제: 당신은 온라인 서점을 위한 웹 애플리케이션을 개발하고 있습니다.
 - 이 애플리케이션은 상점 주인이 책을 검색하고, 상세 정보를 보고 편집하며, 각 책의 판매 수량을 확인할 수 있어야 합니다.
 
