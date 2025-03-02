@@ -229,7 +229,7 @@ INSERT INTO books (bookname, authors, publisher, isbn13, quantity) VALUES
 ('테스트4', '테스트4', '테스트4', '9788998139841', 12),
 ('테스트5', '테스트5', '테스트5', '9788998139858', 8);
 
-# 데티어 삽입 확인
+# 데이터 삽입 확인
 SELECT * FROM books;
 ```
 
