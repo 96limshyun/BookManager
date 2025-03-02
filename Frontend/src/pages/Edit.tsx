@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 
-import Form from "@/components/Form";
+import Form from "@/components/common/Form";
+import EditFormSkeleton from "@/components/skeletons/EditFormSkeleton";
 import { TITLE } from "@/constants";
 import useBookDetailQuery from "@/hooks/Queries/useBookDetailQuery";
 import useEditBookMutation from "@/hooks/Queries/useEditBookMutation";
 import useFormHandler from "@/hooks/useFormHandler";
-import EditFormSkeleton from "@/skeletons/EditFormSkeleton";
 
 const Edit = () => {
     const { id } = useParams();

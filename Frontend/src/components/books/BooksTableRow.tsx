@@ -1,4 +1,4 @@
-import { DeleteBooksBtn, EditBooksBtn } from "./Buttons"
+import { DeleteBooksBtn, EditBooksBtn } from "../Common/Buttons"
 
 import { BookType } from "@/types"
 

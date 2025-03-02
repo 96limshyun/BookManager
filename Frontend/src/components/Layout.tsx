@@ -1,8 +1,8 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
-import { CreateBookBtn } from "./Buttons";
-import ErrorBoundary from "./ErrorBoundary";
-import ErrorFallBack from "./ErrorFallBack";
+import { CreateBookBtn } from "./common/Buttons";
+import ErrorBoundary from "./errorBoundary/ErrorBoundary";
+import ErrorFallBack from "./errorBoundary/ErrorFallBack";
 
 import { PATH } from "@/constants";
 
