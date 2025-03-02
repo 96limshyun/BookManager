@@ -8,6 +8,7 @@ export const QUERY_ERROR_MESSAGE = {
     CREATE_BOOK: "도서 생성 쿼리 오류:",
     EDIT_BOOK: "도서 수정 쿼리 오류:",
     DELETE_BOOK: "도서 삭제 오류:",
+    ISBN_DUPLICATE: "이미 존재하는 ISBN13 입니다."
 };
 
 export const SUCCESS_MESSAGE = {

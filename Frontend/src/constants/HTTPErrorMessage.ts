@@ -7,6 +7,10 @@ export const HTTP_ERROR_MESSAGE = {
         HEADING: "404",
         BODY: "요청하신 페이지를 찾을 수 없습니다.",
     },
+    409: {
+        HEADING: "이미 존재하는 ISBN-13입니다.",
+        BODY: "동일한 ISBN-13을 가진 도서가 이미 존재합니다. 다른 ISBN-13을 입력해주세요.",
+    },
     500: {
         HEADING: "서버 오류가 발생했습니다",
         BODY: "잠시 후 다시 요청해주세요.",
